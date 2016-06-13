@@ -1,4 +1,4 @@
-package com.hjy.sacore.base;
+package com.hjy.sacore.base.inter;
 
 import java.util.List;
 

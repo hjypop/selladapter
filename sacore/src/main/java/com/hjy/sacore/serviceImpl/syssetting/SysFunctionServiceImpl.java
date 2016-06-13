@@ -4,7 +4,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.hjy.sacore.base.BaseServiceImpl;
+import com.hjy.sacore.base.inter.BaseServiceImpl;
 import com.hjy.sacore.dao.syssetting.ISysFunctionDao;
 import com.hjy.sacore.entity.syssetting.SysFunction;
 import com.hjy.sacore.service.syssetting.ISysFunctionService;

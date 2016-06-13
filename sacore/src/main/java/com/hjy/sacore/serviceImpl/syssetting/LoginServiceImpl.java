@@ -1,21 +1,20 @@
 package com.hjy.sacore.serviceImpl.syssetting;
 
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSONObject;
-import com.hjy.sacore.base.BaseServiceImpl;
+import com.hjy.sacore.base.inter.BaseServiceImpl;
 import com.hjy.sacore.dao.project.IUserInfoDao;
 import com.hjy.sacore.entity.project.UserInfo;
 import com.hjy.sacore.service.syssetting.ILoginService;
 
-@Service("loginService") 
+@Service("loginService")
 public class LoginServiceImpl extends BaseServiceImpl<UserInfo, Integer> implements ILoginService {
 
-	@Resource 
+	@Resource
 	private IUserInfoDao userInfoDao;
 
 	/**
@@ -25,76 +24,41 @@ public class LoginServiceImpl extends BaseServiceImpl<UserInfo, Integer> impleme
 	 * @return
 	 * @refactor no
 	 * @date 2016年5月20日上午11:27:59
-	 * @author Yangcl 
+	 * @author Yangcl
 	 * @version 1.0.0.1
 	 */
-	public JSONObject login(UserInfo userInfo , HttpSession session) {
+	public JSONObject login(UserInfo userInfo, HttpSession session) {
 		JSONObject result = new JSONObject();
-		
-		if(StringUtils.isBlank(userInfo.getUserName()) || StringUtils.isBlank(userInfo.getPassword())){
+
+		if (StringUtils.isBlank(userInfo.getUserName()) || StringUtils.isBlank(userInfo.getPassword())) {
 			result.put("status", "error");
 			result.put("msg", "用户名或密码不得为空");
 			return result;
 		}
 		UserInfo info = userInfoDao.login(userInfo);
-		if(null != info){
-			session.setAttribute("userInfo", info);  // 写入session
+		if (null != info) {
+			session.setAttribute("userInfo", info); // 写入session
 			result.put("data", info);
 			result.put("status", "success");
 			result.put("msg", "调用成功");
 			return result;
-		}else{
+		} else {
 			result.put("status", "error");
 			result.put("msg", "用户名或密码错误");
 			return result;
 		}
 	}
 
-	
 	/**
 	 * @descriptions 用户退出
 	 * 
 	 * @param userInfo
 	 * @refactor no
 	 * @date 2016年5月20日上午11:29:28
-	 * @author Yangcl 
+	 * @author Yangcl
 	 * @version 1.0.0.1
 	 */
 	public void logout(UserInfo userInfo) {
 	}
-	
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
