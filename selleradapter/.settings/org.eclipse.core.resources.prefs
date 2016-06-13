@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/main/resources/properties/log4j.properties=UTF-8
+encoding//src/main/webapp/css/style.default.css=UTF-8
+encoding//src/main/webapp/css/style.ie8.css=GBK
+encoding//src/main/webapp/css/style.ie9.css=UTF-8
+encoding//src/main/webapp/inc/mysql-page.jsp=UTF-8
+encoding//src/main/webapp/inc/roleLeft.jsp=UTF-8
+encoding//src/main/webapp/inc/roleTop.jsp=UTF-8
+encoding//src/main/webapp/index.jsp=UTF-8
+encoding//src/main/webapp/js/system/general.js=UTF-8
+encoding//src/main/webapp/jsp/example/pageFormDemo.jsp=UTF-8
+encoding//src/main/webapp/jsp/readme.txt=UTF-8
+encoding//src/main/webapp/jsp/syssetting/sysFunction.jsp=UTF-8
+encoding//src/main/webapp/login.jsp=UTF-8
+encoding//src/test/java=UTF-8
