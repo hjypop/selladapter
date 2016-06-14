@@ -162,9 +162,32 @@ public class ExampleController extends BaseController {
 		return "jsp/example/editExample"; 
 	}
 	
+	/**
+	 * @descriptions 在编辑信息的同时介绍了json序列化与反序列化
+	 * 
+	 * @param info
+	 * @return
+	 * @refactor no
+	 * @date 2016年6月14日下午2:14:31
+	 * @author Yangcl 
+	 * @version 1.0.0.1
+	 */
 	@RequestMapping(value = "editInfo", produces = { "application/json;charset=utf-8" })
 	@ResponseBody
 	public JSONObject editInfo(UserInfo info){
+		
+		UserInfo uu = new UserInfo();
+		uu.setId(23);
+		uu.setCompanyId(2);
+		uu.setUserName("UUBS");
+		uu.setPassword("1234567890");
+		uu.setMobile("1359900127");
+		uu.setEmail("ujhzeesd@hjy.com");
+		
+		String json = this.toJson(uu);
+		logger.info(json); 
+		UserInfo uuu = this.fromJson(json, UserInfo.class);  
+		
 		return userInfoService.editInfo(info);
 	}
 }
