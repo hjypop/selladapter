@@ -19,7 +19,7 @@
                     <a href="" class="gallery">File Manager</a>
                 </li>
 
-                <li class="current">
+                <!-- <li class="current">
                     <a href="#error" class="error">一级菜单栏B</a>
                     <span class="arrow"></span>
                     <ul id="error">
@@ -28,9 +28,9 @@
                         <li><a href="">二级菜单栏F</a></li>
                         <li><a href="">二级菜单栏G</a></li>
                     </ul>
-                </li>
+                </li> -->
 
-                <li class="current">
+                <!-- <li class="current">
                     <a href="#addons" class="addons">一级菜单栏C</a>
                     <span class="arrow"></span>
                     <ul id="addons">
@@ -41,7 +41,7 @@
                         <li><a href="">二级菜单栏L</a></li>
                         <li><a href="">二级菜单栏N</a></li>
                     </ul>
-                </li>
+                </li> -->
 
 
                 <!-- 此处应放入到系统维护导航栏中-->
@@ -49,13 +49,20 @@
                     <a href="#example" class="inbox">开发者快速入门</a>
                     <span class="arrow"></span>
                     <ul id="example">
-                        <li class="current">
-                        	<!-- 必须添加 $ { basePath } -->
-                        	<a href="${basePath}example/pageFormExample.do">简单分页表单示例</a>
+                    	<li class="gallery">
+                        	<a href="${basePath}example/addInfoPage.do">添加信息示例</a>
                         </li>
                         
                         <li class="gallery">
+                        	<!-- 必须添加 $ { basePath } -->
+                        	<a href="${basePath}example/pageFormExample.do">简单分页表单示例</a>
+                        </li>
+                        <!-- <li class="gallery">
                         	<a href="${basePath}example/pageFormExample.do">分页+弹窗分页示例</a>
+                        </li> -->
+                        
+                        <li class="gallery">
+                        	<a href="${basePath}example/queryLeft.do">左连接查询示例</a>
                         </li>
                     </ul>
                 </li>

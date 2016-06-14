@@ -1,5 +1,6 @@
 package com.hjy.sacom.controller.example;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,11 +12,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.alibaba.fastjson.JSONObject;
 import com.github.miemiedev.mybatis.paginator.domain.Order;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hjy.sacom.base.BaseController;
+import com.hjy.sacore.entity.project.Company;
 import com.hjy.sacore.entity.project.UserInfo;
+import com.hjy.sacore.service.project.ICompanyService;
 import com.hjy.sacore.service.syssetting.ILoginService;
 import com.hjy.sacore.service.syssetting.IUserInfoService;
 
@@ -35,6 +41,60 @@ public class ExampleController extends BaseController {
 	private ILoginService loginService;
 	@Autowired
 	private IUserInfoService userInfoService;
+	@Autowired
+	private ICompanyService companyService;
+	
+	
+	/**
+	 * @descriptions 前往添加页面 addExample.jsp
+	 * 
+	 * @param session
+	 * @return
+	 * @author Yangcl
+	 * @date 2016年6月13日-下午10:53:55
+	 * @version 1.0.0.1
+	 */
+	@RequestMapping("addInfoPage")
+	public String toAddPage(HttpSession session){ 
+		// TODO 按钮权限控制等等
+		return "jsp/example/addExample"; 
+	}
+	
+	/**
+	 * @descriptions 添加一条信息到数据库，成功后跳转回添加页面
+	 * 
+	 * @param entity
+	 * @return
+	 * @author Yangcl
+	 * @date 2016年6月13日-下午11:04:45
+	 * @version 1.0.0.1
+	 */
+	@RequestMapping("addInfo")
+	public String addInfo(Company entity , ModelMap model , HttpSession session){ 
+		if(StringUtils.isNotBlank(entity.getCompanyName()) && StringUtils.isNotBlank(entity.getRemark())){
+			entity.setFlag(1);
+			UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
+			entity.setCreateTime(new Date());
+			entity.setCreateUserId( userInfo.getId() ); 
+			entity.setUpdateTime(new Date());
+			entity.setUpdateUserId(userInfo.getId()); 
+			
+			Integer count = companyService.insertSelective(entity);
+			if(count == 1){
+				model.put("status", true);
+				model.put("msg", "数据插入成功！");
+			}else{
+				model.put("status", false);
+				model.put("msg", "数据插入异常！");
+			}
+		}else{
+			model.put("status", false);
+			model.put("msg", "数据不可为空！");
+		}
+		
+		return "jsp/example/addExample"; 
+	}
+	
 	
 	/**
 	 * @descriptions 简单分页示例 不涉及弹窗分页问题 对应 pageFormExample.jsp
@@ -83,6 +143,30 @@ public class ExampleController extends BaseController {
 		return "jsp/example/pageFormExample"; 
 	}
 
+	
+	@RequestMapping(value = "deleteOne", produces = { "application/json;charset=utf-8" })
+	@ResponseBody
+	public JSONObject deleteOne(UserInfo info){
+		return userInfoService.deleteOne(info); 
+	}
+	
+	@RequestMapping("editInfoPage")   
+	public String editInfoPage(UserInfo info , ModelMap model , HttpServletRequest request, HttpSession session){
+		if(StringUtils.isNotBlank(info.getId().toString())){
+			UserInfo entity = userInfoService.find(info.getId());
+			if(entity != null){
+				model.addAttribute("entity", entity);
+			}
+		}
+		
+		return "jsp/example/editExample"; 
+	}
+	
+	@RequestMapping(value = "editInfo", produces = { "application/json;charset=utf-8" })
+	@ResponseBody
+	public JSONObject editInfo(UserInfo info){
+		return userInfoService.editInfo(info);
+	}
 }
 
 
