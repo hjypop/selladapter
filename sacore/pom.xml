@@ -93,6 +93,16 @@
 			<artifactId>spring-orm</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 		<!-- ==============mybatis=========== -->
 		<!-- 从3.2.7进行升级 -->
 		<dependency>
@@ -297,20 +307,17 @@
 		</dependency>
 		<!-- ehcache缓存 -->
 		<dependency>
-		    <groupId>net.sf.ehcache</groupId>
-		    <artifactId>ehcache</artifactId>
-		    <version>2.7.6</version>
-		</dependency>
-		<!-- <dependency>
 			<groupId>net.sf.ehcache</groupId>
 			<artifactId>ehcache</artifactId>
-			<version>2.7.2</version>
-		</dependency> -->
+			<version>2.7.6</version>
+		</dependency>
+		<!-- <dependency> <groupId>net.sf.ehcache</groupId> <artifactId>ehcache</artifactId> 
+			<version>2.7.2</version> </dependency> -->
 		<dependency>
 			<groupId>com.sun.mail</groupId>
 			<artifactId>javax.mail</artifactId>
 			<version>1.5.4</version>
-		</dependency>  
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>sacore</finalName>

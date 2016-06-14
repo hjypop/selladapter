@@ -11,7 +11,6 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.StringUtils;
-import org.aspectj.weaver.ast.Var;
 
 import com.hjy.sacore.base.support.DesSupport;
 import com.hjy.sacore.top.topdo.TopConst;
