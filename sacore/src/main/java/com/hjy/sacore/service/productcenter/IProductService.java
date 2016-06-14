@@ -1,5 +1,7 @@
 package com.hjy.sacore.service.productcenter;
 
+import com.hjy.sacore.dto.productcenter.PcProductinfo;
+
 /**
  * 
  * @author zhy
@@ -16,5 +18,5 @@ public interface IProductService {
 	 * @date: 2016年6月14日上午11:00:26
 	 * @return: int
 	 */
-	int addProductTx();
+	int addProductTx(PcProductinfo pc);
 }
